@@ -1,0 +1,77 @@
+
+*{
+    margin: 0px;
+
+}
+
+header{
+    color: white;
+    background-color: black;
+    height: 10%;
+    padding: 10px;
+    padding-left: 100px;
+    padding-right: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.header-left, .header-right{
+    font-weight: 600;
+    font-size: 40px;
+
+}
+
+.header-left{
+    text-align: right; /*I know what you're thinking, but don't change it*/
+
+}
+
+.header-right{
+    text-align: left; /*I know what you're thinking, but don't change it*/
+
+}
+
+.sidenav{
+    width: 17%;
+    background-color: white;
+    border: none;
+    border-right: 5px solid black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+.main-content{
+    padding: 0px;
+    margin: 0px;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.main-content section{
+    padding-top: 50px;
+
+}
+
+.main-content #draw-menu{
+    width: 10%;
+
+}
+
+.actions{
+    background-color: #0047b3;
+    color: white;
+    list-style: none;
+    list-style-position: inside;
+
+}
+
+.actions a{
+    color: white;
+    text-decoration: none;
+    
+}
