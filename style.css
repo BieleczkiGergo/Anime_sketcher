@@ -49,6 +49,7 @@ header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    width: 100%;
 
 }
 
@@ -74,4 +75,9 @@ header{
     color: white;
     text-decoration: none;
     
+}
+
+section{
+    width: 100%;
+
 }

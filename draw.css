@@ -1,0 +1,20 @@
+
+canvas{
+    border: 2px solid black;
+    box-sizing: content-box;
+    margin: auto;
+
+}
+
+.drawPanel{
+    width: 100%;
+
+}
+
+/*Debug css code*/
+/*
+*{
+    background-color: rgba(0, 0, 255, 20%) !important;
+
+}
+*/
