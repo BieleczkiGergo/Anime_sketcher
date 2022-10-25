@@ -13,13 +13,20 @@ function setup(){
 }
 
 function drawTest(){
-    ctx.beginPath();
-    ctx.moveTo(20, 40);
-    ctx.quadraticCurveTo(60, 0, 80, 17);
-    
-    ctx.stroke();
+    drawEyeFrame(20, 40);
 
+}
+
+function drawEyeFrame(sx, sy, w, h){
+    ctx.beginPath();
+    ctx.moveTo(sx, sy);
+    ctx.bezierCurveTo(0, 0, 0, 0, w, h);
+
+
+    ctx.closePath();
+    ctx.stroke();
 }
 
 setup();
 drawTest();
+
