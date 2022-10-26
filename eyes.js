@@ -12,18 +12,20 @@ function setup(){
     
 }
 
-function drawTest(){
-    drawEyeFrame(20, 40, 80, 10, 0.6, 3);
-
-}
-
-function drawEyeFrame(sx, sy, w, h, slope, upCurve){
+function drawEyeFrame(sx, sy, w, h, upperSlope, curve, bottomSlope){
     //Starting x & y position, width, height, eye slope
-    //Evaluate points for bezier curves
+    //Evaluate points for bézier curves
+    //Set1: upper bézier
+    let e1x = sx+w;
+    let e1y = sy - upperSlope*h;
     let cp1x = sx+ w*(1/5);
-    let cp1y = sy - h*upCurve;
-    let cp2x = sx + w - w*(1/5/slope);
-    let cp2y = sy - h*upCurve;
+    let cp1y = sy - h*curve;
+    let cp2x = sx + w - w*(1/5/upperSlope);
+    let cp2y = sy - h*curve;
+    //Set2: outer bézier
+    let e2x = w + w/2;
+    let e2y = y + e2x/bottomSlope;
+    let cp3x = 
 
     //Mark points
     markPoint(cp1x, cp1y);
@@ -32,17 +34,12 @@ function drawEyeFrame(sx, sy, w, h, slope, upCurve){
     //Draw object
     //Begin path
     ctx.beginPath();
+    ctx.fillStyle = "black";
     ctx.moveTo(sx, sy);
 
     //Upper curve
-    ctx.bezierCurveTo(
-        cp1x,        //control point 1 x
-        cp1y,     //control point 1 y
-        cp2x,       //control point 2 x
-        cp2y,     //control point 2 y
-        sx+w,               //end point x
-        sy - slope*h        //end point y
-    );
+    ctx.bezierCurveTo( cp1x, cp1y, cp2x, cp2y, e1x, e1y );
+
 
 
     ctx.closePath();
@@ -63,6 +60,18 @@ function markPoint(x, y){
 
 }
 
+function redraw(){
+    //Get input
+    let upperSlope = document.getElementById("upper-slope-slider").value / 100;
+    let curve = document.getElementById("curve-slider").value / 10;
+    let bottomSlope = document.getElementById("bottom-slope-slider").value / 100;
+
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, 700, 300);
+    drawEyeFrame(80, 120, 160, 40, upperSlope, curve);
+
+}
+
 setup();
-drawTest();
+redraw();
 
