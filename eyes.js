@@ -24,26 +24,40 @@ function drawEyeFrame(sx, sy, w, h, upperSlope, curve, bottomSlope){
     let cp2y = sy - h*curve;
     //Set2: outer bézier
     let e2x = w + w/2;
-    let e2y = y + e2x/bottomSlope;
-    let cp3x = 
+    let e2y = sy + e2x/bottomSlope;
+    let cp3x = e1x + w/curve;
+    let cp3y = e1y + h/5;
+    let cp4x = e2x + w*(1/curve);
+    let cp4y = e2y;
 
     //Mark points
     markPoint(cp1x, cp1y);
     markPoint(cp2x, cp2y);
+    markPoint(cp3x, cp3y);
+    markPoint(cp4x, cp4y);
 
     //Draw object
     //Begin path
     ctx.beginPath();
     ctx.fillStyle = "black";
+    ctx.lineWidth = 1;
     ctx.moveTo(sx, sy);
 
     //Upper curve
     ctx.bezierCurveTo( cp1x, cp1y, cp2x, cp2y, e1x, e1y );
+    ctx.moveTo( e1x, e1y );
+    ctx.bezierCurveTo( cp3x, cp3y, cp4x, cp4y, e2x, e2y );
 
-
-
-    ctx.closePath();
+    //Draw out
     ctx.stroke();
+    ctx.closePath();
+}
+
+function drawEyeFrame2( sx, sy, w, h, inSlope, outSlope, curve ){
+    //Starting point, width, height, inner slope, outer slope, curve
+    //Evaluate points
+    //Set1: inner bézier
+    
 }
 
 function markPoint(x, y){
@@ -68,7 +82,7 @@ function redraw(){
 
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, 700, 300);
-    drawEyeFrame(80, 120, 160, 40, upperSlope, curve);
+    drawEyeFrame(80, 120, 160, 40, upperSlope, curve, bottomSlope);
 
 }
 
