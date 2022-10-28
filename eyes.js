@@ -57,32 +57,42 @@ function drawEyeFrame2( sx, sy, w, h, inSlope, outSlope, curve ){
     //Starting point, width, height, inner slope, outer slope, curve
     //Evaluate points
     //Set1: inner bézier
+    let e1x = sx - (1/inSlope)*w/2;
+    let e1y = sy - inSlope*h;
     
+    
+    markPoint(e1x, e1y, "blue");
+    markPoint(sx, sy, "purple");
+
 }
 
-function markPoint(x, y){
+function markPoint(x, y, color="red"){
     let size = 2;
     ctx.beginPath();
-    ctx.fillStyle = "red";
+    ctx.fillStyle = color;
+    
     ctx.moveTo(x-size, y-size);
     ctx.lineTo(x+size, y-size),
     ctx.lineTo(x+size, y+size);
     ctx.lineTo(x-size, y+size);
+    ctx.lineTo(x-size, y-size);
 
-    ctx.closePath();
     ctx.fill();
 
 }
 
 function redraw(){
     //Get input
-    let upperSlope = document.getElementById("upper-slope-slider").value / 100;
+    let inSlope = document.getElementById("inner-slope-slider").value / 100;
     let curve = document.getElementById("curve-slider").value / 10;
-    let bottomSlope = document.getElementById("bottom-slope-slider").value / 100;
+    let outSlope = document.getElementById("outer-slope-slider").value / 100;
+    let x = document.getElementById("X-pos-slider").value;
+    let y = document.getElementById("Y-pos-slider").value;
 
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, 700, 300);
-    drawEyeFrame(80, 120, 160, 40, upperSlope, curve, bottomSlope);
+    drawEyeFrame2(x, y, 160, 40, inSlope, outSlope, curve);
+    /*drawEyeFrame(80, 120, 160, 40, upperSlope, curve, bottomSlope);*/
 
 }
 

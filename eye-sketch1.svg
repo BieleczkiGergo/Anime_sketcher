@@ -7,7 +7,7 @@
    viewBox="0 0 210 297"
    version="1.1"
    id="svg5"
-   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
    sodipodi:docname="eye-sketch1.svg"
    xml:space="preserve"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -26,12 +26,12 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="2.7865881"
-     inkscape:cx="287.26886"
-     inkscape:cy="196.2974"
+     inkscape:cx="287.08943"
+     inkscape:cy="282.06537"
      inkscape:window-width="1920"
-     inkscape:window-height="1011"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" /><defs
      id="defs2" /><g
@@ -128,4 +128,8 @@
        style="fill:none;stroke:#6100ff;stroke-width:0.529167;stroke-opacity:1"
        d="m 13.012373,65.661128 29.656806,8.650963"
        id="path2242"
-       sodipodi:nodetypes="cc" /></g></svg>
+       sodipodi:nodetypes="cc" /><path
+       style="fill:#000000;stroke:#012aff;stroke-width:0.529167;stroke-dasharray:none;stroke-opacity:1"
+       d="m 26.015984,72.920714 9.210037,-0.854538 12.53325,-0.664642"
+       id="path319"
+       sodipodi:nodetypes="ccc" /></g></svg>
