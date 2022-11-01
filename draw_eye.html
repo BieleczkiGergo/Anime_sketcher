@@ -30,11 +30,23 @@
                 </canvas>
             </div>
             <div class="tweakBar">
-                <div id="inner-slope"><input type="range" name="slope" id="inner-slope-slider" oninput="redraw()" min="0" max="100" value="20">Inner slope</div>
-                <div id="curve"><input type="range" name="curve" id="curve-slider" oninput="redraw()" min="0" max="100" value="10">Curve</div>
-                <div id="outer-slope"><input type="range" name="curve" id="outer-slope-slider" oninput="redraw()" min="0" max="100" value="10">Outer slope</div>
-                <div id="X-pos"><input type="range" name="curve" id="X-pos-slider" oninput="redraw()" min="0" max="700" value="80">X</div>
-                <div id="Y-pos"><input type="range" name="curve" id="Y-pos-slider" oninput="redraw()" min="0" max="300" value="120">Y</div>
+                <fieldset class="tweak-section">
+                    <legend>Eye frame</legend>
+
+                    <div id="inner-slope"><input type="range" name="slope" id="inner-slope-slider" oninput="redraw()" min=0 max=100 value=80>Inner slope</div>
+                    <div id="curve"><input type="range" name="curve" id="curve-slider" oninput="redraw()" min=0 max=100 value=50>Curve</div>
+                    <div id="outer-slope"><input type="range" name="slope" id="outer-slope-slider" oninput="redraw()" min=0 max=200 value=160>Outer slope</div>
+                    <div id="X-pos"><input type="range" name="X" id="X-pos-slider" oninput="redraw()" min=0 max=700 value=310>X</div>
+                    <div id="Y-pos"><input type="range" name="Y" id="Y-pos-slider" oninput="redraw()" min=0 max=300 value=165>Y</div>
+                    <div id="bump-pos"><input type="range" name="bump" id="bump-pos-slider" oninput="redraw()" min=0 max=100 value=50>Bump pos</div>
+
+                </fieldset>
+                <fieldset class="tweak-section">
+                    <legend>Eyebrow</legend>
+                    
+                </fieldset>
+                <div>Display help/debug lines<input type="checkbox" name="helpers" id="helpers-check" oninput="setting()"></div>
+
             </div>
         </section>
         <div id="draw-menu">
