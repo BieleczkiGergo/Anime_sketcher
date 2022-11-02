@@ -23,6 +23,14 @@ function eyeFrameTop(sx, sy, h, w, curve, bump, ex, ey){
 
 }
 
+function eyeFrameIn(sx, sy, w, h, curve, ex, ey){
+
+}
+
+function eyeFrameOut(){
+
+}
+
 function bezierSlice(sx, sy, cp1x, cp1y, cp2x, cp2y, ex, ey, t){
 
     return [
@@ -42,48 +50,11 @@ function bezierSlice(sx, sy, cp1x, cp1y, cp2x, cp2y, ex, ey, t){
 }
 
 function drawEyeFrame(sx, sy, w, h, upperSlope, curve, bottomSlope){
-    //Starting x & y position, width, height, eye slope
-    //Evaluate points for bézier curves
-    //Set1: upper bézier
-    let e1x = sx+w;
-    let e1y = sy - upperSlope*h;
-    let cp1x = sx+ w*(1/5);
-    let cp1y = sy - h*curve;
-    let cp2x = sx + w - w*(1/5/upperSlope);
-    let cp2y = sy - h*curve;
-    //Set2: outer bézier
-    let e2x = w + w/2;
-    let e2y = sy + e2x/bottomSlope;
-    let cp3x = e1x + w/curve;
-    let cp3y = e1y + h/5;
-    let cp4x = e2x + w*(1/curve);
-    let cp4y = e2y;
-
-    //Mark points
-    markPoint(cp1x, cp1y);
-    markPoint(cp2x, cp2y);
-    markPoint(cp3x, cp3y);
-    markPoint(cp4x, cp4y);
-
-    //Draw object
-    //Begin path
-    ctx.beginPath();
-    ctx.fillStyle = "black";
-    ctx.lineWidth = 1;
-    ctx.moveTo(sx, sy);
-
-    //Upper curve
-    ctx.bezierCurveTo( cp1x, cp1y, cp2x, cp2y, e1x, e1y );
-    ctx.moveTo( e1x, e1y );
-    ctx.bezierCurveTo( cp3x, cp3y, cp4x, cp4y, e2x, e2y );
-
-    //Draw out
-    ctx.stroke();
-    ctx.closePath();
+    
 }
 
 function drawEyeFrame2( sx, sy, w, h, inSlope, outSlope, curve, bump ){
-    //Starting point, width, height, inner slope, outer slope, curve
+    //Starting point, width, height, inner slope, outer slope, curve, bump
     //Evaluate points
     let e1x = sx + w/(2+outSlope);
     let e1y = sy - outSlope*h*0.7;
@@ -91,29 +62,12 @@ function drawEyeFrame2( sx, sy, w, h, inSlope, outSlope, curve, bump ){
     let e2y = sy - inSlope*h;
 
 
-    let p1x, p1y, p2x, p2y; {
-        let p1a = (Math.PI/2)/3 + Math.atan((e1y-e2y) / (e1x-e2x));
-        let p1l = h * curve * 1;
-        p1x = e2x + Math.sin(p1a) * p1l;
-        p1y = e2y + Math.cos(p1a) * p1l;
-        p2x = sx - w*0.2*curve;
-        p2y = sy;
-    }
+    let [p1x, p1y, p2x, p2y] = eyeFrameIn();
 
-    let p3x = sx + w/6;
-    let p3y = sy + h/50;
-    let p4x = e1x + w/100;
-    let p4y = e1y + h/6;
+    let [p3x, p3y, p4x, p4y] = eyeFrameOut();
 
-    let p5x, p5y, p6x, p6y; {
-        let c = [w/2, 1-bump, 1, Math.abs(0.5-bump)];
-
-        p5x = e1x - ( c[0] * c[1] - c[3] );
-        p5y = e1y - ( c[1] * h * curve * c[2] );
-        p6x = e2x + ( bump * c[0] * c[3] );
-        p6y = e2y - ( bump * h * curve - c[2] );
-        
-    }
+    let [p5x, p5y, p6x, p6y] = eyeFrameTop();
+    
     
     /*Help stuff*/ 
     if(helpers) {
